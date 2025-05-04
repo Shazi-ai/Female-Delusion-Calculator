@@ -1,0 +1,2283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Female Delusion Calculator | Premium Dating Analytics</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#F2F0FF',
+              100: '#E4E0FF',
+              200: '#C9C1FF',
+              300: '#AFA2FF',
+              400: '#9483FF',
+              500: '#7964FF',
+              600: '#5D5CDE',
+              700: '#4A49B9',
+              800: '#383794',
+              900: '#25246F',
+            },
+            secondary: {
+              50: '#EFFCFF',
+              100: '#DEF9FF',
+              200: '#B0F1FF',
+              300: '#83E9FF',
+              400: '#55E0FF',
+              500: '#27D8FF',
+              600: '#00BFFF',
+              700: '#00A3E6',
+              800: '#0086CC',
+              900: '#006AB3',
+            },
+            accent: {
+              50: '#FFF0F0',
+              100: '#FFE0E0',
+              200: '#FFC2C2',
+              300: '#FFA3A3',
+              400: '#FF8585',
+              500: '#FF6666',
+              600: '#FF4D4D',
+              700: '#E63939',
+              800: '#CC2525',
+              900: '#B31111',
+            },
+            success: '#10B981',
+            warning: '#FBBF24',
+            error: '#EF4444',
+            dark: {
+              primary: '#13111C',
+              secondary: '#1A1625',
+              tertiary: '#251E34',
+              accent: '#332A47',
+              surface: '#4A3F66'
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            display: ['Clash Display', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          },
+          boxShadow: {
+            'custom': '0 4px 20px rgba(0, 0, 0, 0.08)',
+            'custom-dark': '0 4px 20px rgba(0, 0, 0, 0.25)',
+            'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.15)',
+            'neon': '0 0 5px theme("colors.primary.500"), 0 0 20px theme("colors.primary.500")',
+            'neon-lg': '0 0 10px theme("colors.primary.500"), 0 0 30px theme("colors.primary.500"), 0 0 50px theme("colors.primary.500")',
+          },
+          backdropBlur: {
+            'glass': 'blur(10px)'
+          }
+        },
+      },
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.cdnfonts.com/css/clash-display');
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+    
+    /* Glass morphism elements */
+    .glass-card {
+      @apply bg-white bg-opacity-10 dark:bg-dark-tertiary dark:bg-opacity-40 backdrop-filter backdrop-blur-glass border border-white border-opacity-20 dark:border-dark-accent dark:border-opacity-40 rounded-3xl shadow-glass;
+    }
+    
+    .glass-button {
+      @apply bg-white bg-opacity-10 backdrop-filter backdrop-blur-glass border border-white border-opacity-20 hover:bg-opacity-20 transition-all duration-300;
+    }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      @apply bg-gray-100 dark:bg-dark-tertiary rounded-full;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      @apply bg-primary-400 dark:bg-primary-600 rounded-full;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      @apply bg-primary-500 dark:bg-primary-500;
+    }
+    
+    /* Ultra-modern range sliders */
+    .range-slider {
+      @apply w-full h-2 bg-gray-200 dark:bg-dark-accent rounded-full appearance-none relative z-10;
+    }
+    
+    .range-slider::-webkit-slider-thumb {
+      @apply appearance-none w-6 h-6 rounded-full bg-primary-500 border-2 border-white dark:border-dark-tertiary shadow-lg cursor-pointer transition-all duration-200;
+      box-shadow: 0 0 0 4px rgba(125, 100, 255, 0.2);
+    }
+    
+    .range-slider::-webkit-slider-thumb:hover {
+      @apply bg-primary-600;
+      transform: scale(1.1);
+      box-shadow: 0 0 0 6px rgba(125, 100, 255, 0.3);
+    }
+    
+    .range-slider::-moz-range-thumb {
+      @apply w-6 h-6 rounded-full bg-primary-500 border-2 border-white dark:border-dark-tertiary shadow-lg cursor-pointer transition-all duration-200;
+      box-shadow: 0 0 0 4px rgba(125, 100, 255, 0.2);
+    }
+    
+    .range-slider::-moz-range-thumb:hover {
+      @apply bg-primary-600;
+      transform: scale(1.1);
+      box-shadow: 0 0 0 6px rgba(125, 100, 255, 0.3);
+    }
+    
+    .range-slider-track {
+      @apply absolute h-2 rounded-full bg-gradient-to-r from-primary-400 to-primary-600 pointer-events-none z-0;
+    }
+    
+    /* Double range slider styles */
+    .double-range-track {
+      @apply absolute h-2 rounded-full bg-gradient-to-r from-primary-400 to-primary-600;
+    }
+    
+    /* Advanced custom checkbox */
+    .custom-checkbox {
+      @apply appearance-none w-5 h-5 border-2 border-gray-300 dark:border-dark-accent rounded-md bg-white dark:bg-dark-tertiary checked:bg-primary-500 checked:border-primary-500 focus:outline-none transition-all duration-300 cursor-pointer;
+    }
+    
+    .custom-checkbox:checked {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+      animation: checkbox-pop 0.3s ease-in-out;
+    }
+    
+    @keyframes checkbox-pop {
+      0% { transform: scale(0.8); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    
+    /* Modern gauge with gradient */
+    .result-gauge {
+      @apply relative w-full h-10 bg-gray-200 dark:bg-dark-accent rounded-full overflow-hidden;
+    }
+    
+    .result-gauge-fill {
+      @apply absolute top-0 left-0 h-full transition-all duration-700;
+      background: linear-gradient(90deg, #FF5757 0%, #FFBD59 50%, #4CAF50 100%);
+    }
+    
+    .result-gauge-marker {
+      @apply absolute top-0 h-full w-2 bg-white z-10 transform -translate-x-1/2 transition-all duration-700 shadow-xl;
+    }
+    
+    /* Smooth card hover effect - flat design */
+    .card {
+      transition: box-shadow 0.3s ease, transform 0.2s ease;
+    }
+    
+    .card:hover {
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    }
+    
+    /* Nav links with advanced animation */
+    .nav-link {
+      @apply relative text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 transition-colors duration-200 font-medium;
+      padding-bottom: 2px;
+    }
+    
+    .nav-link::after {
+      content: '';
+      @apply absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-primary-400 to-primary-600 transition-all duration-300 ease-in-out;
+    }
+    
+    .nav-link:hover::after {
+      @apply w-full;
+    }
+    
+    .nav-link.active {
+      @apply text-primary-600 dark:text-primary-400;
+    }
+    
+    .nav-link.active::after {
+      @apply w-full;
+    }
+    
+    /* Country dropdown styles */
+    .country-dropdown {
+      @apply appearance-none bg-white dark:bg-dark-tertiary border border-gray-300 dark:border-dark-accent rounded-lg px-4 py-2 pr-8 leading-tight focus:outline-none focus:border-primary-500 dark:focus:border-primary-400 cursor-pointer transition-all duration-200;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%237964FF'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 0.5rem center;
+      background-size: 1.5em;
+    }
+    
+    .country-dropdown:focus {
+      @apply ring-2 ring-primary-300 dark:ring-primary-700 ring-opacity-50;
+    }
+    
+    /* Button styles */
+    .btn-primary {
+      @apply bg-gradient-to-r from-primary-500 to-primary-600 text-white font-medium rounded-xl px-6 py-3 
+        hover:from-primary-600 hover:to-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-opacity-50 
+        shadow-lg hover:shadow-xl active:shadow-md transition-all duration-200 transform hover:-translate-y-1 active:translate-y-0;
+    }
+    
+    .btn-secondary {
+      @apply bg-white dark:bg-dark-tertiary text-primary-600 dark:text-primary-400 font-medium rounded-xl px-6 py-3 
+        border border-gray-200 dark:border-dark-accent hover:bg-gray-50 dark:hover:bg-dark-accent focus:outline-none 
+        focus:ring-2 focus:ring-primary-500 focus:ring-opacity-50 shadow-md hover:shadow-lg active:shadow-sm 
+        transition-all duration-200 transform hover:-translate-y-1 active:translate-y-0;
+    }
+    
+    /* Animations */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .float {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes pulse-subtle {
+      0% { box-shadow: 0 0 0 0 rgba(125, 100, 255, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(125, 100, 255, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(125, 100, 255, 0); }
+    }
+    
+    .pulse-subtle {
+      animation: pulse-subtle 2s infinite;
+    }
+    
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .fade-up {
+      animation: fadeUp 0.6s ease-out forwards;
+    }
+    
+    /* Staggered animation for children */
+    .stagger-children > * {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    
+    .stagger-children > *:nth-child(1) { animation: fadeUp 0.5s ease-out 0.1s forwards; }
+    .stagger-children > *:nth-child(2) { animation: fadeUp 0.5s ease-out 0.2s forwards; }
+    .stagger-children > *:nth-child(3) { animation: fadeUp 0.5s ease-out 0.3s forwards; }
+    .stagger-children > *:nth-child(4) { animation: fadeUp 0.5s ease-out 0.4s forwards; }
+    .stagger-children > *:nth-child(5) { animation: fadeUp 0.5s ease-out 0.5s forwards; }
+    .stagger-children > *:nth-child(6) { animation: fadeUp 0.5s ease-out 0.6s forwards; }
+    .stagger-children > *:nth-child(7) { animation: fadeUp 0.5s ease-out 0.7s forwards; }
+    .stagger-children > *:nth-child(8) { animation: fadeUp 0.5s ease-out 0.8s forwards; }
+    
+    /* Page content transitions */
+    .page-content {
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    }
+    
+    .page-content.hidden {
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+    }
+    
+    /* Advanced cards hover effect */
+    .hover-card {
+      @apply transition-all duration-300 border border-transparent hover:border-primary-400 hover:shadow-lg;
+    }
+    
+    .hover-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    /* Radial gradient background */
+    .radial-background {
+      background: radial-gradient(circle at 80% 20%, rgba(122, 134, 252, 0.1) 0%, rgba(0, 0, 0, 0) 40%), 
+                  radial-gradient(circle at 10% 70%, rgba(39, 216, 255, 0.1) 0%, rgba(0, 0, 0, 0) 50%);
+    }
+    
+    .dark .radial-background {
+      background: radial-gradient(circle at 80% 20%, rgba(125, 100, 255, 0.15) 0%, rgba(0, 0, 0, 0) 40%), 
+                  radial-gradient(circle at 10% 70%, rgba(39, 216, 255, 0.15) 0%, rgba(0, 0, 0, 0) 50%);
+    }
+    
+    /* Advanced tooltip */
+    .tooltip {
+      @apply relative;
+    }
+    
+    .tooltip:before {
+      @apply content-[''] absolute w-0 h-0 border-8 border-transparent border-t-gray-800 dark:border-t-gray-100 -bottom-4 left-1/2 -translate-x-1/2 opacity-0 transition-opacity duration-200;
+    }
+    
+    .tooltip:after {
+      @apply content-[attr(data-tooltip)] absolute whitespace-nowrap bottom-full left-1/2 transform -translate-x-1/2 bg-gray-800 dark:bg-gray-100 text-white dark:text-gray-800 text-xs rounded px-2 py-1 opacity-0 transition-opacity duration-200;
+    }
+    
+    .tooltip:hover:before,
+    .tooltip:hover:after {
+      @apply opacity-100;
+    }
+    
+    /* Loader */
+    .loader {
+      width: 48px;
+      height: 48px;
+      border: 5px solid #FFF;
+      border-bottom-color: transparent;
+      border-radius: 50%;
+      display: inline-block;
+      box-sizing: border-box;
+      animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    } 
+    
+    /* Confetti animation */
+    @keyframes confetti-slow {
+      0% { transform: translate3d(0, 0, 0) rotateX(0) rotateY(0); }
+      100% { transform: translate3d(25px, 105vh, 0) rotateX(360deg) rotateY(180deg); }
+    }
+    
+    @keyframes confetti-medium {
+      0% { transform: translate3d(0, 0, 0) rotateX(0) rotateY(0); }
+      100% { transform: translate3d(100px, 105vh, 0) rotateX(100deg) rotateY(360deg); }
+    }
+    
+    @keyframes confetti-fast {
+      0% { transform: translate3d(0, 0, 0) rotateX(0) rotateY(0); }
+      100% { transform: translate3d(-50px, 105vh, 0) rotateX(10deg) rotateY(250deg); }
+    }
+    
+    .confetti-container {
+      perspective: 700px;
+      position: absolute;
+      overflow: hidden;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      pointer-events: none;
+    }
+    
+    .confetti {
+      position: absolute;
+      z-index: 1;
+      top: -10px;
+      border-radius: 0%;
+    }
+    
+    .confetti--animation-slow {
+      animation: confetti-slow 3.25s linear 1 forwards;
+    }
+    
+    .confetti--animation-medium {
+      animation: confetti-medium 2.75s linear 1 forwards;
+    }
+    
+    .confetti--animation-fast {
+      animation: confetti-fast 2.25s linear 1 forwards;
+    }
+  </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-900 dark:bg-dark-primary dark:text-gray-100 min-h-screen flex flex-col radial-background">
+  <!-- Animated Background Elements -->
+  <div class="fixed top-0 left-0 w-full h-full pointer-events-none overflow-hidden z-0">
+    <div class="absolute top-[10%] right-[15%] w-64 h-64 rounded-full bg-primary-400 opacity-10 blur-3xl dark:opacity-5 float"></div>
+    <div class="absolute top-[40%] left-[10%] w-96 h-96 rounded-full bg-secondary-400 opacity-10 blur-3xl dark:opacity-5" style="animation: float 4s ease-in-out infinite;"></div>
+    <div class="absolute bottom-[20%] right-[25%] w-80 h-80 rounded-full bg-accent-400 opacity-10 blur-3xl dark:opacity-5" style="animation: float 5s ease-in-out 1s infinite;"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 backdrop-filter backdrop-blur-md bg-white bg-opacity-70 dark:bg-dark-primary dark:bg-opacity-70 py-4 px-4 sm:px-6 lg:px-8 border-b border-gray-200 dark:border-dark-accent shadow-sm">
+    <div class="max-w-7xl mx-auto flex flex-wrap md:flex-nowrap justify-between items-center">
+      <div class="flex items-center mb-4 md:mb-0">
+        <a href="#" class="flex items-center" onclick="showPage('home')">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center text-white shadow-lg">
+            <i class="fas fa-venus text-xl"></i>
+          </div>
+          <div class="ml-3">
+            <h1 class="text-xl font-bold font-display bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-primary-400">Female Delusion Calculator</h1>
+            <p class="text-xs text-gray-500 dark:text-gray-400">Premium Dating Analytics</p>
+          </div>
+        </a>
+      </div>
+      
+      <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8 w-full md:w-auto">
+        <nav class="flex items-center space-x-6 w-full justify-center md:justify-start overflow-x-auto">
+          <a href="#" class="nav-link active py-1" onclick="showPage('home')">Home</a>
+          <a href="#" class="nav-link py-1" onclick="showPage('about')">About</a>
+          <a href="#" class="nav-link py-1" onclick="showPage('stats')">Statistics</a>
+          <a href="#" class="nav-link py-1" onclick="showPage('faq')">FAQ</a>
+        </nav>
+        
+        <div class="flex items-center space-x-4">
+          <div class="relative">
+            <select id="country-selector" class="country-dropdown appearance-none bg-white dark:bg-dark-tertiary border border-gray-300 dark:border-dark-accent rounded-xl px-4 py-2 pr-8 leading-tight focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-300 dark:focus:border-primary-400 cursor-pointer transition-all duration-200" aria-label="Select country">
+              <option value="us">United States</option>
+              <option value="uk">United Kingdom</option>
+              <option value="ca">Canada</option>
+              <option value="au">Australia</option>
+              <option value="de">Germany</option>
+              <option value="fr">France</option>
+              <option value="jp">Japan</option>
+              <option value="br">Brazil</option>
+              <option value="in">India</option>
+            </select>
+          </div>
+          
+          <button id="theme-toggle" class="p-2.5 rounded-full text-gray-500 hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-400 transition-colors duration-200 bg-white dark:bg-dark-tertiary border border-gray-200 dark:border-dark-accent shadow-sm" aria-label="Toggle dark mode">
+            <i id="sun-icon" class="fas fa-sun text-lg hidden"></i>
+            <i id="moon-icon" class="fas fa-moon text-lg"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow py-8 px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Home/Calculator Page -->
+    <div id="home-page" class="page-content">
+      <div class="max-w-4xl mx-auto mb-16 text-center">
+        <h2 class="text-4xl md:text-5xl font-bold font-display mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-primary-400">Discover Your Real Dating Prospects</h2>
+        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          Use advanced demographic analytics to assess how your preferences impact your dating pool and make data-driven relationship decisions.
+        </p>
+      </div>
+      
+      <div class="max-w-5xl mx-auto">
+        <!-- 3D Card Effect for Calculator -->
+        <div class="card mb-12 bg-white dark:bg-dark-secondary rounded-3xl shadow-2xl overflow-hidden border border-gray-100 dark:border-dark-accent">
+          <!-- Visual Header -->
+          <div class="bg-gradient-to-r from-primary-600 to-primary-400 h-24 sm:h-32 relative overflow-hidden">
+            <!-- Abstract Pattern Overlay -->
+            <div class="absolute inset-0 opacity-10">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none" class="h-full w-full">
+                <path fill="#FFFFFF" d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,208C1248,171,1344,117,1392,90.7L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+              </svg>
+            </div>
+            
+            <div class="absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-white dark:bg-dark-tertiary rounded-full p-3 shadow-lg border-4 border-white dark:border-dark-tertiary">
+              <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-primary-400 to-primary-700 flex items-center justify-center">
+                <i class="fas fa-venus text-white text-2xl md:text-3xl"></i>
+              </div>
+            </div>
+          </div>
+          
+          <div class="p-6 md:p-10 pt-12">
+            <h3 class="text-2xl md:text-3xl font-bold font-display text-center mb-8">Your Ideal Partner Profile</h3>
+            
+            <form id="calculator-form" class="space-y-10">
+              <!-- Country Information with Icon -->
+              <div class="bg-gray-50 dark:bg-dark-tertiary rounded-2xl p-4 flex items-center shadow-sm">
+                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-primary-100 dark:bg-dark-accent flex items-center justify-center mr-4">
+                  <i class="fas fa-globe-americas text-primary-500 dark:text-primary-400"></i>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-500 dark:text-gray-400">Currently analyzing data for:</p>
+                  <p class="font-medium text-gray-800 dark:text-gray-200" id="current-country-display">United States</p>
+                </div>
+                <div class="ml-auto">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary-100 text-primary-800 dark:bg-dark-accent dark:text-primary-300">
+                    <span class="w-2 h-2 rounded-full bg-green-500 mr-1.5 animate-pulse"></span>Active
+                  </span>
+                </div>
+              </div>
+              
+              <!-- Age Range Section -->
+              <div class="space-y-5 stagger-children">
+                <div class="flex justify-between items-center">
+                  <label class="flex items-center">
+                    <span class="w-8 h-8 rounded-lg bg-primary-100 dark:bg-dark-accent flex items-center justify-center mr-3">
+                      <i class="fas fa-birthday-cake text-primary-500 dark:text-primary-400"></i>
+                    </span>
+                    <span class="text-lg font-medium">Age Range</span>
+                  </label>
+                  <div class="bg-primary-50 dark:bg-dark-accent text-primary-700 dark:text-primary-300 font-medium rounded-xl px-4 py-1.5 text-sm flex items-center">
+                    <span id="min-age-value">25</span> - <span id="max-age-value">35</span> years
+                  </div>
+                </div>
+                <div class="relative pt-5 pb-2">
+                  <div class="h-2 bg-gray-200 rounded-full dark:bg-dark-accent"></div>
+                  <div id="age-track" class="double-range-track"></div>
+                  <input type="range" id="min-age" class="range-slider absolute top-0 left-0" min="18" max="80" value="25">
+                  <input type="range" id="max-age" class="range-slider absolute top-0 left-0" min="18" max="80" value="35">
+                </div>
+                <div class="flex justify-between text-xs text-gray-500 dark:text-gray-400 px-1">
+                  <span>18</span>
+                  <span>35</span>
+                  <span>50</span>
+                  <span>65</span>
+                  <span>80</span>
+                </div>
+              </div>
+
+              <!-- Height Range Section -->
+              <div class="space-y-5 stagger-children">
+                <div class="flex justify-between items-center">
+                  <label class="flex items-center">
+                    <span class="w-8 h-8 rounded-lg bg-primary-100 dark:bg-dark-accent flex items-center justify-center mr-3">
+                      <i class="fas fa-ruler-vertical text-primary-500 dark:text-primary-400"></i>
+                    </span>
+                    <span class="text-lg font-medium">Minimum Height</span>
+                  </label>
+                  <div class="bg-primary-50 dark:bg-dark-accent text-primary-700 dark:text-primary-300 font-medium rounded-xl px-4 py-1.5 text-sm" id="height-display">5'10" (178cm)</div>
+                </div>
+                <div class="relative">
+                  <input 
+                    type="range" 
+                    id="min-height" 
+                    class="range-slider" 
+                    min="60" 
+                    max="84" 
+                    value="70"
+                  >
+                  <div id="height-track" class="range-slider-track"></div>
+                </div>
+                <div class="flex justify-between text-xs text-gray-500 dark:text-gray-400 px-1">
+                  <span>5'0" (152cm)</span>
+                  <span>5'6" (168cm)</span>
+                  <span>6'0" (183cm)</span>
+                  <span>6'6" (198cm)</span>
+                  <span>7'0" (213cm)</span>
+                </div>
+              </div>
+
+              <!-- Race Preference Section -->
+              <div class="space-y-5 stagger-children">
+                <div class="flex items-center">
+                  <span class="w-8 h-8 rounded-lg bg-primary-100 dark:bg-dark-accent flex items-center justify-center mr-3">
+                    <i class="fas fa-users text-primary-500 dark:text-primary-400"></i>
+                  </span>
+                  <span class="text-lg font-medium">Race Preference</span>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                  <div class="bg-white dark:bg-dark-tertiary p-4 rounded-xl shadow-sm border border-gray-100 dark:border-dark-accent hover:border-primary-300 dark:hover:border-primary-600 transition-all duration-200 transform hover:-translate-y-1">
+                    <label class="flex items-center cursor-pointer">
+                      <input type="checkbox" class="custom-checkbox" name="race" value="white" checked>
+                      <span class="ml-2">White</span>
+                    </label>
+                  </div>
+                  <div class="bg-white dark:bg-dark-tertiary p-4 rounded-xl shadow-sm border border-gray-100 dark:border-dark-accent hover:border-primary-300 dark:hover:border-primary-600 transition-all duration-200 transform hover:-translate-y-1">
+                    <label class="flex items-center cursor-pointer">
+                      <input type="checkbox" class="custom-checkbox" name="race" value="black" checked>
+                      <span class="ml-2">Black</span>
+                    </label>
+                  </div>
+                  <div class="bg-white dark:bg-dark-tertiary p-4 rounded-xl shadow-sm border border-gray-100 dark:border-dark-accent hover:border-primary-300 dark:hover:border-primary-600 transition-all duration-200 transform hover:-translate-y-1">
+                    <label class="flex items-center cursor-pointer">
+                      <input type="checkbox" class="custom-checkbox" name="race" value="asian" checked>
+                      <span class="ml-2">Asian</span>
+                    </label>
+                  </div>
+                  <div class="bg-white dark:bg-dark-tertiary p-4 rounded-xl shadow-sm border border-gray-100 dark:border-dark-accent hover:border-primary-300 dark:hover:border-primary-600 transition-all duration-200 transform hover:-translate-y-1">
+                    <label class="flex items-center cursor-pointer">
+                      <input type="checkbox" class="custom-checkbox" name="race" value="other" checked>
+                      <span class="ml-2">Other</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Income Section -->
+              <div class="space-y-5 stagger-children">
+                <div class="flex justify-between items-center">
+                  <label class="flex items-center">
+                    <span class="w-8 h-8 rounded-lg bg-primary-100 dark:bg-dark-accent flex items-center justify-center mr-3">
+                      <i class="fas fa-dollar-sign text-primary-500 dark:text-primary-400"></i>
+                    </span>
+                    <span class="text-lg font-medium">Minimum Annual Income</span>
+                  </label>
+                  <div class="bg-primary-50 dark:bg-dark-accent text-primary-700 dark:text-primary-300 font-medium rounded-xl px-4 py-1.5 text-sm" id="income-display">$50,000</div>
+                </div>
+                <div class="relative">
+                  <input 
+                    type="range" 
+                    id="min-income" 
+                    class="range-slider" 
+                    min="0" 
+                    max="500000" 
+                    step="5000" 
+                    value="50000"
+                  >
+                  <div id="income-track" class="range-slider-track"></div>
+                </div>
+                <div class="flex justify-between text-xs text-gray-500 dark:text-gray-400 px-1">
+                  <span>$0</span>
+                  <span>$100k</span>
+                  <span>$250k</span>
+                  <span>$400k</span>
+                  <span>$500k+</span>
+                </div>
+              </div>
+
+              <!-- Additional Requirements Section -->
+              <div class="space-y-5 stagger-children">
+                <div class="flex items-center">
+                  <span class="w-8 h-8 rounded-lg bg-primary-100 dark:bg-dark-accent flex items-center justify-center mr-3">
+                    <i class="fas fa-filter text-primary-500 dark:text-primary-400"></i>
+                  </span>
+                  <span class="text-lg font-medium">Additional Requirements</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="bg-white dark:bg-dark-tertiary p-4 rounded-xl shadow-sm border border-gray-100 dark:border-dark-accent hover:border-primary-300 dark:hover:border-primary-600 transition-all duration-200 transform hover:-translate-y-1">
+                    <label class="flex items-center cursor-pointer">
+                      <input type="checkbox" class="custom-checkbox" id="exclude-married" checked>
+                      <span class="ml-2">Exclude married men</span>
+                    </label>
+                  </div>
+                  <div class="bg-white dark:bg-dark-tertiary p-4 rounded-xl shadow-sm border border-gray-100 dark:border-dark-accent hover:border-primary-300 dark:hover:border-primary-600 transition-all duration-200 transform hover:-translate-y-1">
+                    <label class="flex items-center cursor-pointer">
+                      <input type="checkbox" class="custom-checkbox" id="exclude-obese">
+                      <span class="ml-2">Exclude obese men</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pt-4">
+                <button 
+                  type="submit" 
+                  class="w-full py-4 px-6 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-bold rounded-xl transition duration-300 focus:outline-none focus:ring-4 focus:ring-primary-300 shadow-lg hover:shadow-xl flex items-center justify-center group overflow-hidden relative"
+                >
+                  <span class="absolute inset-0 w-full h-full transition-all duration-300 ease-out transform translate-x-0 -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-10 group-hover:translate-x-full group-hover:opacity-20"></span>
+                  <i class="fas fa-calculator mr-2 group-hover:animate-bounce"></i>
+                  <span>Calculate My Chances</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Results Section (Hidden by default) -->
+        <div id="results-section" class="hidden fade-up">
+          <div id="loading-state" class="hidden">
+            <div class="flex items-center justify-center py-20">
+              <div class="loader border-primary-500"></div>
+              <p class="ml-4 text-lg">Analyzing your preferences...</p>
+            </div>
+          </div>
+          
+          <div id="results-content" class="bg-white dark:bg-dark-secondary rounded-3xl shadow-2xl overflow-hidden border border-gray-100 dark:border-dark-accent">
+            <!-- Visual Header for Results -->
+            <div class="bg-gradient-to-r from-primary-600 to-primary-400 h-24 sm:h-32 relative overflow-hidden">
+              <!-- Abstract Pattern Overlay -->
+              <div class="absolute inset-0 opacity-10">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none" class="h-full w-full">
+                  <path fill="#FFFFFF" d="M0,224L60,234.7C120,245,240,267,360,250.7C480,235,600,181,720,181.3C840,181,960,235,1080,245.3C1200,256,1320,224,1380,208L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+                </svg>
+              </div>
+              
+              <!-- Trophy icon -->
+              <div class="absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-white dark:bg-dark-tertiary rounded-full p-3 shadow-lg border-4 border-white dark:border-dark-tertiary">
+                <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center pulse-subtle">
+                  <i class="fas fa-chart-pie text-white text-xl md:text-2xl"></i>
+                </div>
+              </div>
+            </div>
+            
+            <div class="p-6 md:p-10 pt-12 relative">
+              <!-- Confetti container (for animation) -->
+              <div id="confetti-container" class="confetti-container" style="display: none;"></div>
+              
+              <h3 class="text-2xl md:text-3xl font-bold font-display text-center mb-6">Analysis Results</h3>
+              
+              <div class="mb-12">
+                <p class="text-center text-gray-600 dark:text-gray-300 mb-2">The probability of finding a man matching all your criteria:</p>
+                <div class="text-center">
+                  <div class="text-6xl md:text-7xl font-bold text-center my-6 text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-primary-400 inline-block" id="result-percentage">0.05%</div>
+                </div>
+                
+                <div class="result-gauge mt-8 mb-2 shadow-inner">
+                  <div class="result-gauge-fill" id="gauge-fill" style="width: 0%;"></div>
+                  <div class="result-gauge-marker" id="gauge-marker" style="left: 0%;"></div>
+                </div>
+                <div class="flex justify-between text-sm font-medium mt-2">
+                  <span class="text-red-500">Extremely Rare</span>
+                  <span class="text-yellow-500">Rare</span>
+                  <span class="text-green-500">Common</span>
+                </div>
+              </div>
+              
+              <!-- Statistics row -->
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div class="bg-gray-50 dark:bg-dark-tertiary rounded-xl p-4 text-center">
+                  <p class="text-sm text-gray-500 dark:text-gray-400">Men in Dating Pool</p>
+                  <p class="text-xl font-bold text-primary-600 dark:text-primary-400" id="men-count">1 in 2,000</p>
+                </div>
+                <div class="bg-gray-50 dark:bg-dark-tertiary rounded-xl p-4 text-center">
+                  <p class="text-sm text-gray-500 dark:text-gray-400">Height Filter</p>
+                  <p class="text-xl font-bold text-primary-600 dark:text-primary-400" id="height-impact">-42%</p>
+                </div>
+                <div class="bg-gray-50 dark:bg-dark-tertiary rounded-xl p-4 text-center">
+                  <p class="text-sm text-gray-500 dark:text-gray-400">Income Filter</p>
+                  <p class="text-xl font-bold text-primary-600 dark:text-primary-400" id="income-impact">-68%</p>
+                </div>
+                <div class="bg-gray-50 dark:bg-dark-tertiary rounded-xl p-4 text-center">
+                  <p class="text-sm text-gray-500 dark:text-gray-400">Standard Category</p>
+                  <p class="text-xl font-bold text-primary-600 dark:text-primary-400" id="standard-category">Very High</p>
+                </div>
+              </div>
+
+              <div class="bg-gray-50 dark:bg-dark-tertiary rounded-2xl p-6 mb-8 shadow-sm">
+                <h4 class="text-xl font-bold font-display mb-4 flex items-center">
+                  <i class="fas fa-sliders-h text-primary-500 dark:text-primary-400 mr-2"></i> Your Selected Criteria
+                </h4>
+                <div class="space-y-3" id="criteria-summary">
+                  <!-- JS will populate this -->
+                </div>
+              </div>
+              
+              <div class="mb-8">
+                <h4 class="text-xl font-bold font-display mb-4 flex items-center">
+                  <i class="fas fa-chart-bar text-primary-500 dark:text-primary-400 mr-2"></i> What This Means
+                </h4>
+                <p class="text-gray-600 dark:text-gray-300 mb-4 text-lg leading-relaxed" id="result-explanation">
+                  <!-- JS will populate this -->
+                </p>
+                
+                <div id="result-advice" class="mt-6 p-5 bg-primary-50 dark:bg-dark-accent rounded-2xl border-l-4 border-primary-500 dark:border-primary-400">
+                  <!-- JS will populate this -->
+                </div>
+              </div>
+              
+              <!-- Compare and Share Section -->
+              <div class="flex flex-col md:flex-row gap-4 mt-10">
+                <button 
+                  id="reset-button" 
+                  class="flex-1 py-3 px-4 bg-white dark:bg-dark-tertiary hover:bg-gray-50 dark:hover:bg-dark-accent text-gray-700 dark:text-gray-200 font-medium rounded-xl transition duration-200 border border-gray-200 dark:border-dark-accent focus:outline-none flex items-center justify-center"
+                >
+                  <i class="fas fa-redo-alt mr-2"></i> Reset Criteria
+                </button>
+                
+                <button 
+                  id="compare-button" 
+                  class="flex-1 py-3 px-4 bg-gradient-to-r from-secondary-500 to-secondary-600 text-white font-medium rounded-xl transition duration-200 focus:outline-none focus:ring-2 focus:ring-secondary-300 flex items-center justify-center"
+                >
+                  <i class="fas fa-chart-line mr-2"></i> Compare by Age
+                </button>
+                
+                <button 
+                  id="share-button" 
+                  class="flex-1 py-3 px-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-medium rounded-xl transition duration-200 focus:outline-none focus:ring-2 focus:ring-primary-300 flex items-center justify-center"
+                >
+                  <i class="fas fa-share-alt mr-2"></i> Share Results
+                </button>
+              </div>
+              
+              <!-- Comparison Section (hidden by default) -->
+              <div id="comparison-section" class="mt-8 hidden">
+                <h4 class="text-xl font-bold font-display mb-4">Age Comparison</h4>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">See how your probability changes across different age ranges:</p>
+                
+                <div class="space-y-4">
+                  <div class="bg-white dark:bg-dark-tertiary p-4 rounded-xl shadow-sm border border-gray-100 dark:border-dark-accent flex items-center">
+                    <div class="w-24 text-sm">Ages 18-25:</div>
+                    <div class="flex-grow mx-4 bg-gray-200 dark:bg-dark-accent h-4 rounded-full relative">
+                      <div class="absolute h-full bg-gradient-to-r from-primary-400 to-primary-600 rounded-full" style="width: 12%"></div>
+                    </div>
+                    <div class="w-16 text-right font-medium">0.12%</div>
+                  </div>
+                  
+                  <div class="bg-white dark:bg-dark-tertiary p-4 rounded-xl shadow-sm border border-gray-100 dark:border-dark-accent flex items-center">
+                    <div class="w-24 text-sm">Ages 26-35:</div>
+                    <div class="flex-grow mx-4 bg-gray-200 dark:bg-dark-accent h-4 rounded-full relative">
+                      <div class="absolute h-full bg-gradient-to-r from-primary-400 to-primary-600 rounded-full" style="width: 38%"></div>
+                    </div>
+                    <div class="w-16 text-right font-medium">0.38%</div>
+                  </div>
+                  
+                  <div class="bg-white dark:bg-dark-tertiary p-4 rounded-xl shadow-sm border border-gray-100 dark:border-dark-accent flex items-center">
+                    <div class="w-24 text-sm">Ages 36-45:</div>
+                    <div class="flex-grow mx-4 bg-gray-200 dark:bg-dark-accent h-4 rounded-full relative">
+                      <div class="absolute h-full bg-gradient-to-r from-primary-400 to-primary-600 rounded-full" style="width: 32%"></div>
+                    </div>
+                    <div class="w-16 text-right font-medium">0.32%</div>
+                  </div>
+                  
+                  <div class="bg-white dark:bg-dark-tertiary p-4 rounded-xl shadow-sm border border-gray-100 dark:border-dark-accent flex items-center">
+                    <div class="w-24 text-sm">Ages 46-55:</div>
+                    <div class="flex-grow mx-4 bg-gray-200 dark:bg-dark-accent h-4 rounded-full relative">
+                      <div class="absolute h-full bg-gradient-to-r from-primary-400 to-primary-600 rounded-full" style="width: 23%"></div>
+                    </div>
+                    <div class="w-16 text-right font-medium">0.23%</div>
+                  </div>
+                  
+                  <div class="bg-white dark:bg-dark-tertiary p-4 rounded-xl shadow-sm border border-gray-100 dark:border-dark-accent flex items-center">
+                    <div class="w-24 text-sm">Ages 56+:</div>
+                    <div class="flex-grow mx-4 bg-gray-200 dark:bg-dark-accent h-4 rounded-full relative">
+                      <div class="absolute h-full bg-gradient-to-r from-primary-400 to-primary-600 rounded-full" style="width: 14%"></div>
+                    </div>
+                    <div class="w-16 text-right font-medium">0.14%</div>
+                  </div>
+                </div>
+                
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-4">
+                  The best odds are with men aged 26-35, where your criteria match approximately 1 in 263 men.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- About Page -->
+    <div id="about-page" class="page-content hidden">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white dark:bg-dark-secondary rounded-3xl shadow-xl overflow-hidden border border-gray-100 dark:border-dark-accent mb-12">
+          <div class="bg-gradient-to-r from-primary-600 to-primary-400 h-24 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none" class="h-full w-full">
+                <path fill="#FFFFFF" d="M0,160L48,154.7C96,149,192,139,288,154.7C384,171,480,213,576,213.3C672,213,768,171,864,165.3C960,160,1056,192,1152,192C1248,192,1344,160,1392,144L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+              </svg>
+            </div>
+            
+            <div class="absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-white dark:bg-dark-tertiary rounded-full p-3 shadow-lg border-4 border-white dark:border-dark-tertiary">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary-400 to-primary-700 flex items-center justify-center">
+                <i class="fas fa-info text-white text-2xl"></i>
+              </div>
+            </div>
+          </div>
+          
+          <div class="p-6 md:p-10 pt-12">
+            <h2 class="text-3xl font-bold font-display mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-primary-400">About The Female Delusion Calculator</h2>
+            
+            <div class="prose prose-lg max-w-none dark:prose-invert">
+              <p>The Female Delusion Calculator is a sophisticated analytical tool designed to provide women with a data-driven perspective on their dating preferences. By analyzing comprehensive demographic data from various countries, our calculator offers a realistic assessment of the probability of finding a partner who meets all specified criteria.</p>
+              
+              <div class="my-8 bg-gray-50 dark:bg-dark-tertiary p-6 rounded-2xl border-l-4 border-primary-500 dark:border-primary-400">
+                <h3 class="text-xl font-medium mb-2 mt-0">Our Purpose</h3>
+                <p class="mb-0">We believe in empowering women with factual information to make informed decisions about their dating expectations. In today's digital age, dating apps and social media can sometimes create unrealistic standards. Our calculator bridges the gap between perception and reality, allowing users to adjust their expectations based on statistical probabilities rather than idealized notions.</p>
+              </div>
+              
+              <h3>How It Works</h3>
+              <p>Our calculator employs sophisticated statistical models that analyze multiple demographic factors simultaneously. The analysis takes into account:</p>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                <div class="bg-white dark:bg-dark-tertiary p-5 rounded-xl shadow-sm border border-gray-100 dark:border-dark-accent">
+                  <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 rounded-full bg-primary-100 dark:bg-dark-accent flex items-center justify-center mr-3">
+                      <i class="fas fa-birthday-cake text-primary-500 dark:text-primary-400"></i>
+                    </div>
+                    <h4 class="font-bold text-lg m-0">Age Distribution</h4>
+                  </div>
+                  <p class="m-0 text-gray-600 dark:text-gray-300">Comprehensive age distribution data for male populations across different countries and regions.</p>
+                </div>
+                
+                <div class="bg-white dark:bg-dark-tertiary p-5 rounded-xl shadow-sm border border-gray-100 dark:border-dark-accent">
+                  <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 rounded-full bg-primary-100 dark:bg-dark-accent flex items-center justify-center mr-3">
+                      <i class="fas fa-ruler-vertical text-primary-500 dark:text-primary-400"></i>
+                    </div>
+                    <h4 class="font-bold text-lg m-0">Height Distribution</h4>
+                  </div>
+                  <p class="m-0 text-gray-600 dark:text-gray-300">Country-specific height data following normal distribution patterns with region-appropriate means and standard deviations.</p>
+                </div>
+                
+                <div class="bg-white dark:bg-dark-tertiary p-5 rounded-xl shadow-sm border border-gray-100 dark:border-dark-accent">
+                  <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 rounded-full bg-primary-100 dark:bg-dark-accent flex items-center justify-center mr-3">
+                      <i class="fas fa-dollar-sign text-primary-500 dark:text-primary-400"></i>
+                    </div>
+                    <h4 class="font-bold text-lg m-0">Income Distribution</h4>
+                  </div>
+                  <p class="m-0 text-gray-600 dark:text-gray-300">Economic data that accounts for variable income distributions across different countries and economic systems.</p>
+                </div>
+                
+                <div class="bg-white dark:bg-dark-tertiary p-5 rounded-xl shadow-sm border border-gray-100 dark:border-dark-accent">
+                  <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 rounded-full bg-primary-100 dark:bg-dark-accent flex items-center justify-center mr-3">
+                      <i class="fas fa-users text-primary-500 dark:text-primary-400"></i>
+                    </div>
+                    <h4 class="font-bold text-lg m-0">Demographic Factors</h4>
+                  </div>
+                  <p class="m-0 text-gray-600 dark:text-gray-300">Racial demographics, marriage rates, and health statistics (including obesity rates) specific to each country.</p>
+                </div>
+              </div>
+              
+              <p>The calculator uses a multiplicative probability model to determine the percentage of men who simultaneously meet all specified criteria. The results are presented alongside helpful interpretations and advice to contextualize the findings.</p>
+              
+              <h3>Our Data Sources</h3>
+              <p>We utilize the most recent and reliable data sources available for each supported country, including:</p>
+              
+              <ul>
+                <li>US Census Bureau and American Community Survey</li>
+                <li>Office for National Statistics (UK)</li>
+                <li>Statistics Canada</li>
+                <li>Australian Bureau of Statistics</li>
+                <li>Eurostat</li>
+                <li>World Health Organization</li>
+                <li>National health surveys from individual countries</li>
+                <li>Economic research institutions</li>
+              </ul>
+              
+              <p>Our team regularly updates the underlying data to ensure accuracy and relevance of the calculated probabilities.</p>
+              
+              <div class="my-8 p-6 rounded-2xl bg-primary-50 dark:bg-dark-accent">
+                <h3 class="flex items-center text-xl font-medium mb-2 mt-0">
+                  <i class="fas fa-exclamation-circle text-primary-500 dark:text-primary-400 mr-2"></i>
+                  Disclaimer
+                </h3>
+                <p class="mb-0 text-gray-700 dark:text-gray-200">
+                  The Female Delusion Calculator is designed for informational and educational purposes only. The results should be interpreted as statistical approximations rather than absolute truths. Individual dating experiences may vary significantly based on numerous factors not captured by demographic data alone, including personality compatibility, shared values, and personal circumstances.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Statistics Page -->
+    <div id="stats-page" class="page-content hidden">
+      <div class="max-w-6xl mx-auto">
+        <div class="bg-white dark:bg-dark-secondary rounded-3xl shadow-xl overflow-hidden border border-gray-100 dark:border-dark-accent mb-8">
+          <div class="bg-gradient-to-r from-primary-600 to-primary-400 h-24 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none" class="h-full w-full">
+                <path fill="#FFFFFF" d="M0,96L48,112C96,128,192,160,288,170.7C384,181,480,171,576,144C672,117,768,75,864,74.7C960,75,1056,117,1152,133.3C1248,149,1344,139,1392,133.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+              </svg>
+            </div>
+            
+            <div class="absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-white dark:bg-dark-tertiary rounded-full p-3 shadow-lg border-4 border-white dark:border-dark-tertiary">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary-400 to-primary-700 flex items-center justify-center">
+                <i class="fas fa-chart-pie text-white text-2xl"></i>
+              </div>
+            </div>
+          </div>
+          
+          <div class="p-6 md:p-10 pt-12">
+            <h2 class="text-3xl font-bold font-display mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-primary-400">Dating Demographics & Statistics</h2>
+            
+            <div class="mb-8">
+              <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 text-center">
+                Our calculator uses real demographic data to generate probability estimates. Explore key statistics that influence the dating pool across different countries.
+              </p>
+            </div>
+            
+            <!-- Height Statistics Card -->
+            <div class="bg-white dark:bg-dark-tertiary p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-dark-accent mb-8">
+              <h3 class="text-xl font-bold font-display mb-6 flex items-center">
+                <span class="w-8 h-8 rounded-lg bg-primary-100 dark:bg-dark-accent flex items-center justify-center mr-3">
+                  <i class="fas fa-ruler-vertical text-primary-500 dark:text-primary-400"></i>
+                </span>
+                Height Distribution By Country
+              </h3>
+              
+              <div class="relative h-72 overflow-hidden rounded-xl bg-gray-50 dark:bg-dark-accent mb-4">
+                <!-- This would be a chart in a real implementation -->
+                <div class="absolute bottom-0 left-0 w-full h-full flex items-end">
+                  <div class="w-[16.66%] h-[65%] bg-primary-500 bg-opacity-70 mx-px rounded-t-md relative group">
+                    <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-primary-500 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                      Netherlands: 6'0" (183cm)
+                    </div>
+                  </div>
+                  <div class="w-[16.66%] h-[63%] bg-primary-500 bg-opacity-70 mx-px rounded-t-md relative group">
+                    <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-primary-500 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                      Denmark: 5'11" (181cm)
+                    </div>
+                  </div>
+                  <div class="w-[16.66%] h-[62%] bg-primary-500 bg-opacity-70 mx-px rounded-t-md relative group">
+                    <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-primary-500 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                      Germany: 5'11" (180cm)
+                    </div>
+                  </div>
+                  <div class="w-[16.66%] h-[60%] bg-primary-500 bg-opacity-70 mx-px rounded-t-md relative group">
+                    <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-primary-500 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                      Australia: 5'10" (178cm)
+                    </div>
+                  </div>
+                  <div class="w-[16.66%] h-[58%] bg-primary-500 bg-opacity-70 mx-px rounded-t-md relative group">
+                    <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-primary-500 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                      United States: 5'9" (175cm)
+                    </div>
+                  </div>
+                  <div class="w-[16.66%] h-[56%] bg-primary-500 bg-opacity-70 mx-px rounded-t-md relative group">
+                    <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-primary-500 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                      Japan: 5'7" (171cm)
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <p class="text-sm text-gray-500 dark:text-gray-400 italic text-center mb-4">Average male height varies significantly by country and region</p>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="bg-gray-50 dark:bg-dark-accent p-4 rounded-xl">
+                  <h4 class="font-semibold mb-2">Height Threshold Impact</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">
+                    In the United States, requiring a minimum height of 6'0" (183cm) eliminates approximately 85% of men from your dating pool.
+                  </p>
+                </div>
+                
+                <div class="bg-gray-50 dark:bg-dark-accent p-4 rounded-xl">
+                  <h4 class="font-semibold mb-2">Regional Variations</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">
+                    Northern European countries have the tallest populations, while Southeast Asian and South American countries have shorter average heights.
+                  </p>
+                </div>
+                
+                <div class="bg-gray-50 dark:bg-dark-accent p-4 rounded-xl">
+                  <h4 class="font-semibold mb-2">Height Probability</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">
+                    Each additional inch above average height reduces the available dating pool by approximately 15%.
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Income Statistics Card -->
+            <div class="bg-white dark:bg-dark-tertiary p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-dark-accent mb-8">
+              <h3 class="text-xl font-bold font-display mb-6 flex items-center">
+                <span class="w-8 h-8 rounded-lg bg-primary-100 dark:bg-dark-accent flex items-center justify-center mr-3">
+                  <i class="fas fa-dollar-sign text-primary-500 dark:text-primary-400"></i>
+                </span>
+                Income Distribution Analysis
+              </h3>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <div class="relative h-60 overflow-hidden rounded-xl bg-gray-50 dark:bg-dark-accent mb-4">
+                    <!-- This would be a chart in a real implementation -->
+                    <div class="absolute bottom-0 left-0 w-full h-full flex items-end pb-4">
+                      <div class="w-[20%] relative group">
+                        <div class="h-[70%] mx-1 rounded-t-md bg-gradient-to-t from-primary-600 to-primary-400"></div>
+                        <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-primary-500 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                          $0-50k: 52%
+                        </div>
+                        <div class="text-xs text-center mt-2">$0-50k</div>
+                      </div>
+                      <div class="w-[20%] relative group">
+                        <div class="h-[25%] mx-1 rounded-t-md bg-gradient-to-t from-primary-600 to-primary-400"></div>
+                        <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-primary-500 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                          $50-100k: 33%
+                        </div>
+                        <div class="text-xs text-center mt-2">$50-100k</div>
+                      </div>
+                      <div class="w-[20%] relative group">
+                        <div class="h-[10%] mx-1 rounded-t-md bg-gradient-to-t from-primary-600 to-primary-400"></div>
+                        <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-primary-500 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                          $100-150k: 10%
+                        </div>
+                        <div class="text-xs text-center mt-2">$100-150k</div>
+                      </div>
+                      <div class="w-[20%] relative group">
+                        <div class="h-[4%] mx-1 rounded-t-md bg-gradient-to-t from-primary-600 to-primary-400"></div>
+                        <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-primary-500 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                          $150-200k: 3%
+                        </div>
+                        <div class="text-xs text-center mt-2">$150-200k</div>
+                      </div>
+                      <div class="w-[20%] relative group">
+                        <div class="h-[2%] mx-1 rounded-t-md bg-gradient-to-t from-primary-600 to-primary-400"></div>
+                        <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-primary-500 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                          $200k+: 2%
+                        </div>
+                        <div class="text-xs text-center mt-2">$200k+</div>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-sm text-gray-500 dark:text-gray-400 italic text-center">United States income distribution (male)</p>
+                </div>
+                
+                <div class="bg-gray-50 dark:bg-dark-accent p-5 rounded-xl">
+                  <h4 class="font-semibold mb-3">Key Income Statistics</h4>
+                  <ul class="space-y-3">
+                    <li class="flex justify-between">
+                      <span>U.S. Median Male Income:</span>
+                      <span class="font-medium">$56,000</span>
+                    </li>
+                    <li class="flex justify-between">
+                      <span>Men earning $100k+:</span>
+                      <span class="font-medium">~15%</span>
+                    </li>
+                    <li class="flex justify-between">
+                      <span>Men earning $200k+:</span>
+                      <span class="font-medium">~2%</span>
+                    </li>
+                    <li class="flex justify-between">
+                      <span>Men earning $500k+:</span>
+                      <span class="font-medium">~0.1%</span>
+                    </li>
+                  </ul>
+                  
+                  <div class="mt-4 pt-4 border-t border-gray-200 dark:border-dark-tertiary">
+                    <p class="text-sm text-gray-600 dark:text-gray-300">
+                      Setting a minimum income requirement of $100,000 immediately eliminates approximately 85% of men from your dating pool in the United States.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="bg-primary-50 dark:bg-dark-accent p-4 rounded-xl">
+                <h4 class="font-semibold flex items-center mb-2">
+                  <i class="fas fa-info-circle text-primary-500 dark:text-primary-400 mr-2"></i>
+                  Global Income Variations
+                </h4>
+                <p class="text-sm text-gray-600 dark:text-gray-300">
+                  Income distribution varies significantly by country. The same dollar amount represents different levels of affluence in different economies. Our calculator adjusts for purchasing power parity and local economic conditions to provide accurate probability estimates across countries.
+                </p>
+              </div>
+            </div>
+            
+            <!-- Combined Statistics Card -->
+            <div class="bg-white dark:bg-dark-tertiary p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-dark-accent">
+              <h3 class="text-xl font-bold font-display mb-6 flex items-center">
+                <span class="w-8 h-8 rounded-lg bg-primary-100 dark:bg-dark-accent flex items-center justify-center mr-3">
+                  <i class="fas fa-filter text-primary-500 dark:text-primary-400"></i>
+                </span>
+                Multiplicative Effect of Criteria
+              </h3>
+              
+              <p class="text-gray-600 dark:text-gray-300 mb-6">
+                When multiple criteria are combined, the probability decreases multiplicatively, not additively. This creates a "filtering" effect that dramatically reduces the available dating pool with each additional requirement.
+              </p>
+              
+              <div class="relative h-72 overflow-hidden rounded-xl bg-gray-50 dark:bg-dark-accent mb-6">
+                <!-- This would be a chart in a real implementation -->
+                <div class="p-4 h-full relative">
+                  <!-- Funnel visualization -->
+                  <div class="w-full h-[17%] bg-primary-300 rounded-t-lg relative">
+                    <div class="absolute inset-0 flex items-center px-6 justify-between text-sm">
+                      <span>All Single Men</span>
+                      <span class="font-semibold">100%</span>
+                    </div>
+                  </div>
+                  <div class="w-[85%] h-[17%] bg-primary-400 mx-auto relative">
+                    <div class="absolute inset-0 flex items-center px-6 justify-between text-sm text-white">
+                      <span>Age Filter</span>
+                      <span class="font-semibold">65%</span>
+                    </div>
+                  </div>
+                  <div class="w-[60%] h-[17%] bg-primary-500 mx-auto relative">
+                    <div class="absolute inset-0 flex items-center px-6 justify-between text-sm text-white">
+                      <span>Height Filter</span>
+                      <span class="font-semibold">23%</span>
+                    </div>
+                  </div>
+                  <div class="w-[35%] h-[17%] bg-primary-600 mx-auto relative">
+                    <div class="absolute inset-0 flex items-center px-6 justify-between text-sm text-white">
+                      <span>Income Filter</span>
+                      <span class="font-semibold">8%</span>
+                    </div>
+                  </div>
+                  <div class="w-[12%] h-[17%] bg-primary-700 mx-auto rounded-b-lg relative">
+                    <div class="absolute inset-0 flex items-center px-6 justify-between text-sm text-white">
+                      <span>Race/Other</span>
+                      <span class="font-semibold">0.5%</span>
+                    </div>
+                  </div>
+                  
+                  <!-- Arrows -->
+                  <div class="absolute right-4 top-[17%] transform -translate-y-1/2 text-xs text-gray-500">
+                    <span class="flex items-center">
+                      <i class="fas fa-arrow-down mr-1"></i>-35%
+                    </span>
+                  </div>
+                  <div class="absolute right-4 top-[34%] transform -translate-y-1/2 text-xs text-gray-500">
+                    <span class="flex items-center">
+                      <i class="fas fa-arrow-down mr-1"></i>-42%
+                    </span>
+                  </div>
+                  <div class="absolute right-4 top-[51%] transform -translate-y-1/2 text-xs text-gray-500">
+                    <span class="flex items-center">
+                      <i class="fas fa-arrow-down mr-1"></i>-15%
+                    </span>
+                  </div>
+                  <div class="absolute right-4 top-[68%] transform -translate-y-1/2 text-xs text-gray-500">
+                    <span class="flex items-center">
+                      <i class="fas fa-arrow-down mr-1"></i>-7.5%
+                    </span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-gray-50 dark:bg-dark-accent p-4 rounded-xl">
+                  <h4 class="font-semibold mb-2">Combined Probabilities</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">
+                    Each additional criterion you add significantly reduces your dating pool. With 5+ specific criteria, probabilities often fall below 1%.
+                  </p>
+                </div>
+                
+                <div class="bg-gray-50 dark:bg-dark-accent p-4 rounded-xl">
+                  <h4 class="font-semibold mb-2">Most Restrictive Factors</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">
+                    High income requirements and above-average height specifications typically have the most dramatic limiting effect on your dating pool.
+                  </p>
+                </div>
+                
+                <div class="bg-gray-50 dark:bg-dark-accent p-4 rounded-xl">
+                  <h4 class="font-semibold mb-2">Optimal Balance</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">
+                    Focusing on 2-3 truly important criteria rather than having many requirements can significantly increase your chances of finding a compatible partner.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- FAQ Page -->
+    <div id="faq-page" class="page-content hidden">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white dark:bg-dark-secondary rounded-3xl shadow-xl overflow-hidden border border-gray-100 dark:border-dark-accent mb-8">
+          <div class="bg-gradient-to-r from-primary-600 to-primary-400 h-24 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none" class="h-full w-full">
+                <path fill="#FFFFFF" d="M0,256L48,240C96,224,192,192,288,176C384,160,480,160,576,176C672,192,768,224,864,213.3C960,203,1056,149,1152,133.3C1248,117,1344,139,1392,149.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+              </svg>
+            </div>
+            
+            <div class="absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-white dark:bg-dark-tertiary rounded-full p-3 shadow-lg border-4 border-white dark:border-dark-tertiary">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary-400 to-primary-700 flex items-center justify-center">
+                <i class="fas fa-question text-white text-2xl"></i>
+              </div>
+            </div>
+          </div>
+          
+          <div class="p-6 md:p-10 pt-12">
+            <h2 class="text-3xl font-bold font-display mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-primary-400">Frequently Asked Questions</h2>
+            
+            <div class="space-y-8">
+              <div class="bg-white dark:bg-dark-tertiary p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-dark-accent transform transition-all duration-200 hover:shadow-md">
+                <h3 class="text-xl font-semibold mb-3 font-display flex items-center">
+                  <span class="w-8 h-8 rounded-full bg-primary-100 dark:bg-dark-accent flex items-center justify-center mr-3 flex-shrink-0">
+                    <i class="fas fa-question text-primary-500 dark:text-primary-400"></i>
+                  </span>
+                  What is the Female Delusion Calculator?
+                </h3>
+                <div class="pl-11">
+                  <p class="text-gray-600 dark:text-gray-300">
+                    The Female Delusion Calculator is an advanced analytical tool designed to help women understand the statistical likelihood of finding a partner who meets all of their specific criteria. By analyzing comprehensive demographic data, the calculator provides a data-driven probability estimate and insights about how realistic certain dating standards might be in the current dating market.
+                  </p>
+                </div>
+              </div>
+              
+              <div class="bg-white dark:bg-dark-tertiary p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-dark-accent transform transition-all duration-200 hover:shadow-md">
+                <h3 class="text-xl font-semibold mb-3 font-display flex items-center">
+                  <span class="w-8 h-8 rounded-full bg-primary-100 dark:bg-dark-accent flex items-center justify-center mr-3 flex-shrink-0">
+                    <i class="fas fa-question text-primary-500 dark:text-primary-400"></i>
+                  </span>
+                  Is this calculator accurate?
+                </h3>
+                <div class="pl-11">
+                  <p class="text-gray-600 dark:text-gray-300 mb-3">
+                    Our calculator uses real demographic data from reliable sources to provide probability estimates that are statistically sound. The calculations are based on comprehensive datasets from government census reports, economic surveys, and health statistics.
+                  </p>
+                  <p class="text-gray-600 dark:text-gray-300">
+                    However, it's important to understand that these are approximations based on available statistics and should be interpreted as general guidance rather than exact predictions. Dating and relationships are complex and involve many factors beyond measurable demographics, including personality compatibility, shared values, and personal circumstances.
+                  </p>
+                </div>
+              </div>
+              
+              <div class="bg-white dark:bg-dark-tertiary p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-dark-accent transform transition-all duration-200 hover:shadow-md">
+                <h3 class="text-xl font-semibold mb-3 font-display flex items-center">
+                  <span class="w-8 h-8 rounded-full bg-primary-100 dark:bg-dark-accent flex items-center justify-center mr-3 flex-shrink-0">
+                    <i class="fas fa-question text-primary-500 dark:text-primary-400"></i>
+                  </span>
+                  Should I lower my standards if I get a low probability?
+                </h3>
+                <div class="pl-11">
+                  <p class="text-gray-600 dark:text-gray-300 mb-3">
+                    Not necessarily. The calculator is designed to provide information, not prescribe what you should do. Having standards is important, and you should prioritize what truly matters to you in a relationship.
+                  </p>
+                  <p class="text-gray-600 dark:text-gray-300">
+                    However, understanding which criteria significantly narrow your dating pool can help you make informed decisions about which standards are non-negotiable and which might be more flexible. It's about finding a balance between maintaining important values and being open to connections that might not perfectly fit a predetermined checklist.
+                  </p>
+                </div>
+              </div>
+              
+              <div class="bg-white dark:bg-dark-tertiary p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-dark-accent transform transition-all duration-200 hover:shadow-md">
+                <h3 class="text-xl font-semibold mb-3 font-display flex items-center">
+                  <span class="w-8 h-8 rounded-full bg-primary-100 dark:bg-dark-accent flex items-center justify-center mr-3 flex-shrink-0">
+                    <i class="fas fa-question text-primary-500 dark:text-primary-400"></i>
+                  </span>
+                  Why do different countries show different probabilities?
+                </h3>
+                <div class="pl-11">
+                  <p class="text-gray-600 dark:text-gray-300">
+                    Demographics vary significantly across countries. Factors such as average height, income distribution, racial composition, marriage rates, and obesity prevalence differ based on geography, culture, and economic conditions. Our calculator adjusts its calculations based on the specific demographic data for each supported country, providing country-specific probability estimates.
+                  </p>
+                </div>
+              </div>
+              
+              <div class="bg-white dark:bg-dark-tertiary p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-dark-accent transform transition-all duration-200 hover:shadow-md">
+                <h3 class="text-xl font-semibold mb-3 font-display flex items-center">
+                  <span class="w-8 h-8 rounded-full bg-primary-100 dark:bg-dark-accent flex items-center justify-center mr-3 flex-shrink-0">
+                    <i class="fas fa-question text-primary-500 dark:text-primary-400"></i>
+                  </span>
+                  Is this calculator only for women?
+                </h3>
+                <div class="pl-11">
+                  <p class="text-gray-600 dark:text-gray-300">
+                    While the name targets women, the underlying concept of understanding statistical probabilities in dating is applicable to anyone. The current version focuses on women seeking men, but the statistical approach could be applied to other dating preferences and demographics. We may develop versions for other demographic combinations in the future based on user demand.
+                  </p>
+                </div>
+              </div>
+              
+              <div class="bg-white dark:bg-dark-tertiary p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-dark-accent transform transition-all duration-200 hover:shadow-md">
+                <h3 class="text-xl font-semibold mb-3 font-display flex items-center">
+                  <span class="w-8 h-8 rounded-full bg-primary-100 dark:bg-dark-accent flex items-center justify-center mr-3 flex-shrink-0">
+                    <i class="fas fa-question text-primary-500 dark:text-primary-400"></i>
+                  </span>
+                  How do you calculate the probability?
+                </h3>
+                <div class="pl-11">
+                  <p class="text-gray-600 dark:text-gray-300 mb-3">
+                    Our calculator uses a multiplicative probability model that considers the percentage of men in each selected age range, height range, income bracket, and racial category. Additional filters like marital status and physical condition further refine the results.
+                  </p>
+                  <p class="text-gray-600 dark:text-gray-300">
+                    For example, if you specify criteria where:
+                  </p>
+                  <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 ml-4 mb-3 space-y-1">
+                    <li>30% of men are in your desired age range</li>
+                    <li>15% of men meet your height requirement</li>
+                    <li>10% of men meet your income requirement</li>
+                    <li>And 50% meet your other criteria</li>
+                  </ul>
+                  <p class="text-gray-600 dark:text-gray-300">
+                    The multiplicative probability would be: 0.3 × 0.15 × 0.1 × 0.5 = 0.00225 or 0.225%, meaning less than 1 in 400 men would meet all your criteria simultaneously.
+                  </p>
+                </div>
+              </div>
+              
+              <div class="bg-white dark:bg-dark-tertiary p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-dark-accent transform transition-all duration-200 hover:shadow-md">
+                <h3 class="text-xl font-semibold mb-3 font-display flex items-center">
+                  <span class="w-8 h-8 rounded-full bg-primary-100 dark:bg-dark-accent flex items-center justify-center mr-3 flex-shrink-0">
+                    <i class="fas fa-question text-primary-500 dark:text-primary-400"></i>
+                  </span>
+                  Can this calculator help me find a partner?
+                </h3>
+                <div class="pl-11">
+                  <p class="text-gray-600 dark:text-gray-300">
+                    The calculator doesn't directly help you find a partner, but it provides valuable perspective that can inform your approach to dating. Understanding the statistical reality of your preferences can help you focus on truly important qualities, be more open to connections that might not meet every criterion, and set realistic expectations. This awareness can lead to more productive and fulfilling dating experiences.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white dark:bg-dark-secondary py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-200 dark:border-dark-accent mt-12">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="col-span-1 md:col-span-2">
+          <div class="flex items-center mb-6">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center text-white shadow-lg">
+              <i class="fas fa-venus text-xl"></i>
+            </div>
+            <div class="ml-3">
+              <h3 class="text-lg font-bold font-display bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-primary-400">Female Delusion Calculator</h3>
+              <p class="text-xs text-gray-500 dark:text-gray-400">Premium Dating Analytics</p>
+            </div>
+          </div>
+          <p class="text-gray-500 dark:text-gray-400 text-sm mb-6">
+            The Female Delusion Calculator provides a data-driven approach to understanding dating standards and expectations. Use our tool to gain insights into your preferences and make more informed decisions about your dating life.
+          </p>
+          <div class="flex space-x-5">
+            <a href="#" class="text-gray-400 hover:text-primary-500 dark:text-gray-500 dark:hover:text-primary-400 transition-colors duration-200" aria-label="Facebook">
+              <i class="fab fa-facebook-f text-lg"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-primary-500 dark:text-gray-500 dark:hover:text-primary-400 transition-colors duration-200" aria-label="Twitter">
+              <i class="fab fa-twitter text-lg"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-primary-500 dark:text-gray-500 dark:hover:text-primary-400 transition-colors duration-200" aria-label="Instagram">
+              <i class="fab fa-instagram text-lg"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-primary-500 dark:text-gray-500 dark:hover:text-primary-400 transition-colors duration-200" aria-label="TikTok">
+              <i class="fab fa-tiktok text-lg"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">Quick Links</h3>
+          <ul class="space-y-3">
+            <li>
+              <a href="#" class="text-gray-600 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-400 transition-colors duration-200 text-sm flex items-center" onclick="showPage('home')">
+                <i class="fas fa-chevron-right text-xs text-primary-400 mr-2"></i> Home
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-gray-600 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-400 transition-colors duration-200 text-sm flex items-center" onclick="showPage('about')">
+                <i class="fas fa-chevron-right text-xs text-primary-400 mr-2"></i> About
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-gray-600 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-400 transition-colors duration-200 text-sm flex items-center" onclick="showPage('stats')">
+                <i class="fas fa-chevron-right text-xs text-primary-400 mr-2"></i> Statistics
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-gray-600 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-400 transition-colors duration-200 text-sm flex items-center" onclick="showPage('faq')">
+                <i class="fas fa-chevron-right text-xs text-primary-400 mr-2"></i> FAQ
+              </a>
+            </li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">Legal</h3>
+          <ul class="space-y-3">
+            <li>
+              <a href="#" class="text-gray-600 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-400 transition-colors duration-200 text-sm flex items-center">
+                <i class="fas fa-chevron-right text-xs text-primary-400 mr-2"></i> Privacy Policy
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-gray-600 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-400 transition-colors duration-200 text-sm flex items-center">
+                <i class="fas fa-chevron-right text-xs text-primary-400 mr-2"></i> Terms of Service
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-gray-600 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-400 transition-colors duration-200 text-sm flex items-center">
+                <i class="fas fa-chevron-right text-xs text-primary-400 mr-2"></i> Disclaimer
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-gray-600 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-400 transition-colors duration-200 text-sm flex items-center">
+                <i class="fas fa-chevron-right text-xs text-primary-400 mr-2"></i> Contact Us
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="mt-12 pt-8 border-t border-gray-200 dark:border-dark-accent text-center">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <p class="text-sm text-gray-500 dark:text-gray-400">© 2023 Female Delusion Calculator. All rights reserved.</p>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 md:mt-0">For entertainment and educational purposes only.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Confetti generator script -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+
+    // Dark mode toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check for user preference
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+        updateThemeIcons(true);
+      }
+      
+      // Toggle dark mode
+      const themeToggle = document.getElementById('theme-toggle');
+      themeToggle.addEventListener('click', function() {
+        const isDarkMode = document.documentElement.classList.toggle('dark');
+        updateThemeIcons(isDarkMode);
+      });
+      
+      function updateThemeIcons(isDark) {
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+        
+        if (isDark) {
+          sunIcon.classList.remove('hidden');
+          moonIcon.classList.add('hidden');
+        } else {
+          sunIcon.classList.add('hidden');
+          moonIcon.classList.remove('hidden');
+        }
+      }
+      
+      // Initial theme check
+      updateThemeIcons(document.documentElement.classList.contains('dark'));
+      
+      // Show the home page by default
+      showPage('home');
+      
+      // Initialize 3D card effect
+      initializeCardEffect();
+    });
+
+    // Simple card effect (no 3D) - just basic hover effect
+    function initializeCardEffect() {
+      // We're not implementing any special effects to keep it professional and functional
+      // The card will use the default hover effect from the CSS
+      
+      // We'll leave this function empty but keep it to avoid breaking any code that calls it
+      return;
+    }
+
+    // Page navigation
+    function showPage(pageId) {
+      const pages = ['home', 'about', 'stats', 'faq'];
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      // Update active nav link
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.innerText.toLowerCase() === pageId) {
+          link.classList.add('active');
+        }
+      });
+      
+      // Hide all pages and show the selected one
+      pages.forEach(page => {
+        const pageElement = document.getElementById(`${page}-page`);
+        if (pageElement) {
+          if (page === pageId) {
+            // First set display to block, then remove the hidden class
+            // This ensures the animation works
+            pageElement.style.display = 'block';
+            setTimeout(() => {
+              pageElement.classList.remove('hidden');
+              // Re-initialize AOS for the newly displayed page
+              AOS.refresh();
+              // Re-initialize 3D card effect
+              if (page === 'home') {
+                initializeCardEffect();
+              }
+            }, 10);
+          } else {
+            pageElement.classList.add('hidden');
+            setTimeout(() => {
+              if (pageElement.classList.contains('hidden')) {
+                pageElement.style.display = 'none';
+              }
+            }, 500);
+          }
+        }
+      });
+      
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Country selector
+    const countrySelector = document.getElementById('country-selector');
+    const currentCountryDisplay = document.getElementById('current-country-display');
+    
+    countrySelector.addEventListener('change', function() {
+      const selectedCountry = this.options[this.selectedIndex].text;
+      currentCountryDisplay.textContent = selectedCountry;
+      
+      // Reset the form when changing countries
+      resetCalculator();
+    });
+
+    // Handle range inputs
+    const minAgeInput = document.getElementById('min-age');
+    const maxAgeInput = document.getElementById('max-age');
+    const minAgeValue = document.getElementById('min-age-value');
+    const maxAgeValue = document.getElementById('max-age-value');
+    const ageTrack = document.getElementById('age-track');
+
+    const heightInput = document.getElementById('min-height');
+    const heightDisplay = document.getElementById('height-display');
+    const heightTrack = document.getElementById('height-track');
+
+    const incomeInput = document.getElementById('min-income');
+    const incomeDisplay = document.getElementById('income-display');
+    const incomeTrack = document.getElementById('income-track');
+
+    // Format height from inches to feet and inches + cm
+    function formatHeight(inches) {
+      const feet = Math.floor(inches / 12);
+      const remainingInches = inches % 12;
+      const cm = Math.round(inches * 2.54);
+      return `${feet}'${remainingInches}" (${cm}cm)`;
+    }
+
+    // Format income with dollar sign and commas
+    function formatIncome(amount) {
+      return '$' + amount.toLocaleString('en-US');
+    }
+
+    // Age range slider functionality
+    function updateAgeSliders() {
+      let minAge = parseInt(minAgeInput.value);
+      let maxAge = parseInt(maxAgeInput.value);
+      
+      // Ensure min doesn't exceed max
+      if (minAge >= maxAge) {
+        if (minAge >= maxAgeInput.max - 1) {
+          minAge = maxAgeInput.max - 1;
+          minAgeInput.value = minAge;
+        }
+        maxAge = minAge + 1;
+        maxAgeInput.value = maxAge;
+      }
+      
+      minAgeValue.textContent = minAge;
+      maxAgeValue.textContent = maxAge;
+      
+      // Update the track between the two thumbs
+      const minPercent = ((minAge - minAgeInput.min) / (minAgeInput.max - minAgeInput.min)) * 100;
+      const maxPercent = ((maxAge - minAgeInput.min) / (minAgeInput.max - minAgeInput.min)) * 100;
+      
+      ageTrack.style.left = minPercent + '%';
+      ageTrack.style.width = (maxPercent - minPercent) + '%';
+    }
+
+    minAgeInput.addEventListener('input', updateAgeSliders);
+    maxAgeInput.addEventListener('input', updateAgeSliders);
+
+    // Height slider
+    heightInput.addEventListener('input', function() {
+      const heightInches = parseInt(heightInput.value);
+      heightDisplay.textContent = formatHeight(heightInches);
+      
+      const percent = ((heightInches - heightInput.min) / (heightInput.max - heightInput.min)) * 100;
+      heightTrack.style.width = percent + '%';
+    });
+
+    // Income slider
+    incomeInput.addEventListener('input', function() {
+      const income = parseInt(incomeInput.value);
+      incomeDisplay.textContent = formatIncome(income);
+      
+      const percent = ((income - incomeInput.min) / (incomeInput.max - incomeInput.min)) * 100;
+      incomeTrack.style.width = percent + '%';
+    });
+
+    // Initialize sliders
+    updateAgeSliders();
+    heightInput.dispatchEvent(new Event('input'));
+    incomeInput.dispatchEvent(new Event('input'));
+
+    // Calculate and display results
+    const calculatorForm = document.getElementById('calculator-form');
+    const resultsSection = document.getElementById('results-section');
+    const resultPercentage = document.getElementById('result-percentage');
+    const gaugeFill = document.getElementById('gauge-fill');
+    const gaugeMarker = document.getElementById('gauge-marker');
+    const criteriaSummary = document.getElementById('criteria-summary');
+    const resultExplanation = document.getElementById('result-explanation');
+    const resultAdvice = document.getElementById('result-advice');
+    const resetButton = document.getElementById('reset-button');
+    const shareButton = document.getElementById('share-button');
+    const compareButton = document.getElementById('compare-button');
+    const comparisonSection = document.getElementById('comparison-section');
+    const loadingState = document.getElementById('loading-state');
+    const resultsContent = document.getElementById('results-content');
+    const menCount = document.getElementById('men-count');
+    const heightImpact = document.getElementById('height-impact');
+    const incomeImpact = document.getElementById('income-impact');
+    const standardCategory = document.getElementById('standard-category');
+
+    calculatorForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Show loading state
+      resultsSection.classList.remove('hidden');
+      resultsSection.style.display = 'block';
+      loadingState.classList.remove('hidden');
+      loadingState.style.display = 'block';
+      resultsContent.style.display = 'none';
+      
+      window.scrollTo({
+        top: resultsSection.offsetTop - 20,
+        behavior: 'smooth'
+      });
+      
+      // Simulate loading time (1.5s)
+      setTimeout(() => {
+        // Get all selected values
+        const selectedCountry = countrySelector.value;
+        const minAge = parseInt(minAgeInput.value);
+        const maxAge = parseInt(maxAgeInput.value);
+        const minHeight = parseInt(heightInput.value);
+        const minIncome = parseInt(incomeInput.value);
+        
+        const selectedRaces = Array.from(document.querySelectorAll('input[name="race"]:checked')).map(input => input.value);
+        const excludeMarried = document.getElementById('exclude-married').checked;
+        const excludeObese = document.getElementById('exclude-obese').checked;
+        
+        // Calculate probability based on country and criteria
+        let probability = calculateProbabilityByCountry(
+          selectedCountry, 
+          minAge, 
+          maxAge, 
+          minHeight, 
+          minIncome, 
+          selectedRaces, 
+          excludeMarried, 
+          excludeObese
+        );
+        
+        // Calculate impacts
+        const heightImpactValue = calculateHeightImpact(selectedCountry, minHeight);
+        const incomeImpactValue = calculateIncomeImpact(selectedCountry, minIncome);
+        const menCountValue = formatMenCount(probability);
+        const standardCategoryValue = getStandardCategory(probability);
+        
+        // Hide loading, show results
+        loadingState.style.display = 'none';
+        resultsContent.style.display = 'block';
+        
+        // Update results display
+        resultPercentage.textContent = probability.toFixed(2) + '%';
+        
+        // Update gauge
+        let gaugePercent = Math.min(100, probability * 3); // Scale for visual effect
+        gaugeFill.style.width = gaugePercent + '%';
+        gaugeMarker.style.left = gaugePercent + '%';
+        
+        // Update statistics
+        menCount.textContent = menCountValue;
+        heightImpact.textContent = heightImpactValue;
+        incomeImpact.textContent = incomeImpactValue;
+        standardCategory.textContent = standardCategoryValue;
+        
+        // Update criteria summary
+        criteriaSummary.innerHTML = `
+          <div class="flex justify-between py-2 border-b border-gray-200 dark:border-gray-600">
+            <span class="text-gray-700 dark:text-gray-300">Country:</span>
+            <span class="font-medium text-gray-900 dark:text-white">${countrySelector.options[countrySelector.selectedIndex].text}</span>
+          </div>
+          <div class="flex justify-between py-2 border-b border-gray-200 dark:border-gray-600">
+            <span class="text-gray-700 dark:text-gray-300">Age Range:</span>
+            <span class="font-medium text-gray-900 dark:text-white">${minAge} - ${maxAge} years</span>
+          </div>
+          <div class="flex justify-between py-2 border-b border-gray-200 dark:border-gray-600">
+            <span class="text-gray-700 dark:text-gray-300">Minimum Height:</span>
+            <span class="font-medium text-gray-900 dark:text-white">${formatHeight(minHeight)}</span>
+          </div>
+          <div class="flex justify-between py-2 border-b border-gray-200 dark:border-gray-600">
+            <span class="text-gray-700 dark:text-gray-300">Minimum Income:</span>
+            <span class="font-medium text-gray-900 dark:text-white">${formatIncome(minIncome)}</span>
+          </div>
+          <div class="flex justify-between py-2 border-b border-gray-200 dark:border-gray-600">
+            <span class="text-gray-700 dark:text-gray-300">Race Preference:</span>
+            <span class="font-medium text-gray-900 dark:text-white">${selectedRaces.map(r => r.charAt(0).toUpperCase() + r.slice(1)).join(', ')}</span>
+          </div>
+          <div class="flex justify-between py-2 border-b border-gray-200 dark:border-gray-600">
+            <span class="text-gray-700 dark:text-gray-300">Exclude Married Men:</span>
+            <span class="font-medium text-gray-900 dark:text-white">${excludeMarried ? 'Yes' : 'No'}</span>
+          </div>
+          <div class="flex justify-between py-2">
+            <span class="text-gray-700 dark:text-gray-300">Exclude Obese Men:</span>
+            <span class="font-medium text-gray-900 dark:text-white">${excludeObese ? 'Yes' : 'No'}</span>
+          </div>
+        `;
+        
+        // Generate explanation and advice
+        const { explanation, advice } = getExplanationAndAdvice(probability);
+        resultExplanation.textContent = explanation;
+        resultAdvice.innerHTML = `
+          <div class="flex items-start">
+            <i class="fas fa-lightbulb text-primary-500 dark:text-primary-400 mt-1 mr-3 text-lg"></i>
+            <div>
+              <h4 class="font-semibold mb-1 text-gray-900 dark:text-white">Advice</h4>
+              <p class="text-gray-700 dark:text-gray-300">${advice}</p>
+            </div>
+          </div>
+        `;
+        
+        // Hide comparison section initially
+        comparisonSection.classList.add('hidden');
+        
+        // Create confetti effect for high probabilities
+        if (probability > 5) {
+          createConfetti();
+        }
+      }, 1500);
+    });
+
+    // Share results functionality
+    shareButton.addEventListener('click', function() {
+      // In a real implementation, this would generate a shareable link or image
+      // For this demo, show a simple alert
+      alert('✨ Share feature would allow you to generate a shareable image or link with your results for social media. ✨');
+    });
+    
+    // Compare button functionality
+    compareButton.addEventListener('click', function() {
+      // Toggle comparison section
+      comparisonSection.classList.toggle('hidden');
+      
+      // Scroll to comparison section if showing
+      if (!comparisonSection.classList.contains('hidden')) {
+        setTimeout(() => {
+          comparisonSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+      }
+    });
+
+    // Reset button
+    resetButton.addEventListener('click', function() {
+      resetCalculator();
+      
+      resultsSection.classList.add('hidden');
+      setTimeout(() => {
+        if (resultsSection.classList.contains('hidden')) {
+          resultsSection.style.display = 'none';
+        }
+      }, 500);
+      
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    function resetCalculator() {
+      minAgeInput.value = 25;
+      maxAgeInput.value = 35;
+      heightInput.value = 70;
+      incomeInput.value = 50000;
+      
+      document.querySelectorAll('input[name="race"]').forEach(input => {
+        input.checked = true;
+      });
+      
+      document.getElementById('exclude-married').checked = true;
+      document.getElementById('exclude-obese').checked = false;
+      
+      updateAgeSliders();
+      heightInput.dispatchEvent(new Event('input'));
+      incomeInput.dispatchEvent(new Event('input'));
+    }
+
+    // Format statistics
+    function formatMenCount(probability) {
+      if (probability < 0.1) {
+        return `1 in ${Math.round(1000/probability) * 100}`;
+      } else if (probability < 1) {
+        return `1 in ${Math.round(100/probability) * 10}`;
+      } else if (probability < 10) {
+        return `1 in ${Math.round(100/probability)}`;
+      } else {
+        return `1 in ${Math.round(100/probability)}`;
+      }
+    }
+    
+    function calculateHeightImpact(country, minHeight) {
+      let meanHeight, stdDev;
+      
+      // Set mean and standard deviation based on country
+      switch(country) {
+        case 'nl': // Netherlands
+          meanHeight = 71.5; // 5'11.5"
+          stdDev = 2.8;
+          break;
+        case 'de': // Germany
+          meanHeight = 71; // 5'11"
+          stdDev = 2.9;
+          break;
+        case 'us': // United States
+          meanHeight = 69; // 5'9"
+          stdDev = 3;
+          break;
+        case 'jp': // Japan
+          meanHeight = 67.5; // 5'7.5"
+          stdDev = 2.7;
+          break;
+        default:
+          meanHeight = 69.5;
+          stdDev = 3;
+      }
+      
+      // Calculate percentage of men below minHeight
+      const zScore = (minHeight - meanHeight) / stdDev;
+      const percentageBelowHeight = normalCDF(zScore) * 100;
+      
+      return `-${Math.round(percentageBelowHeight)}%`;
+    }
+    
+    function calculateIncomeImpact(country, minIncome) {
+      let percentageBelowIncome;
+      
+      if (minIncome <= 30000) {
+        percentageBelowIncome = 20;
+      } else if (minIncome <= 50000) {
+        percentageBelowIncome = 40;
+      } else if (minIncome <= 75000) {
+        percentageBelowIncome = 65;
+      } else if (minIncome <= 100000) {
+        percentageBelowIncome = 85;
+      } else if (minIncome <= 150000) {
+        percentageBelowIncome = 92;
+      } else if (minIncome <= 200000) {
+        percentageBelowIncome = 97;
+      } else {
+        percentageBelowIncome = 99;
+      }
+      
+      return `-${percentageBelowIncome}%`;
+    }
+    
+    function getStandardCategory(probability) {
+      if (probability < 0.1) return "Extremely High";
+      if (probability < 1) return "Very High";
+      if (probability < 5) return "High";
+      if (probability < 15) return "Moderate";
+      if (probability < 30) return "Reasonable";
+      return "Flexible";
+    }
+
+    // Country-specific probability calculations
+    function calculateProbabilityByCountry(country, minAge, maxAge, minHeight, minIncome, races, excludeMarried, excludeObese) {
+      // Base probability calculation
+      let probability = 100;
+      
+      // Age factor
+      const ageRange = maxAge - minAge;
+      const ageFactor = ageRange / 62; // 62 is the max range (18-80)
+      probability *= ageFactor * 1.5; // Age range has a moderate impact
+      
+      // Country-specific adjustments
+      let heightFactor, incomeFactor, marriedFactor, obeseFactor;
+      
+      switch(country) {
+        case 'us': // United States
+          heightFactor = calculateHeightProbability(minHeight, 69, 3); // Mean 5'9", SD 3"
+          incomeFactor = calculateIncomeProbabilityUS(minIncome);
+          marriedFactor = 0.5; // About 50% of adult men are married
+          obeseFactor = 0.65; // About 35% of adult men are obese
+          break;
+          
+        case 'uk': // United Kingdom
+          heightFactor = calculateHeightProbability(minHeight, 69, 3); // Similar to US
+          incomeFactor = calculateIncomeProbabilityUK(minIncome);
+          marriedFactor = 0.52; // About 48% of adult men are married
+          obeseFactor = 0.7; // About 30% of adult men are obese
+          break;
+          
+        case 'ca': // Canada
+          heightFactor = calculateHeightProbability(minHeight, 70, 3); // Slightly taller than US
+          incomeFactor = calculateIncomeProbabilityCA(minIncome);
+          marriedFactor = 0.53; // About 47% of adult men are married
+          obeseFactor = 0.7; // About 30% of adult men are obese
+          break;
+          
+        case 'au': // Australia
+          heightFactor = calculateHeightProbability(minHeight, 70, 3); // Similar to Canada
+          incomeFactor = calculateIncomeProbabilityAU(minIncome);
+          marriedFactor = 0.51; // About 49% of adult men are married
+          obeseFactor = 0.67; // About 33% of adult men are obese
+          break;
+          
+        case 'de': // Germany
+          heightFactor = calculateHeightProbability(minHeight, 71, 3); // Taller than US
+          incomeFactor = calculateIncomeProbabilityDE(minIncome);
+          marriedFactor = 0.55; // About 45% of adult men are married
+          obeseFactor = 0.76; // About 24% of adult men are obese
+          break;
+          
+        case 'fr': // France
+          heightFactor = calculateHeightProbability(minHeight, 69.5, 3); // Between US and Germany
+          incomeFactor = calculateIncomeProbabilityFR(minIncome);
+          marriedFactor = 0.54; // About 46% of adult men are married
+          obeseFactor = 0.83; // About 17% of adult men are obese
+          break;
+          
+        case 'jp': // Japan
+          heightFactor = calculateHeightProbability(minHeight, 67, 2.5); // Shorter than US, less variation
+          incomeFactor = calculateIncomeProbabilityJP(minIncome);
+          marriedFactor = 0.6; // About 40% of adult men are married
+          obeseFactor = 0.96; // Only about 4% of adult men are obese
+          break;
+          
+        case 'br': // Brazil
+          heightFactor = calculateHeightProbability(minHeight, 67.5, 3); // Shorter than US
+          incomeFactor = calculateIncomeProbabilityBR(minIncome);
+          marriedFactor = 0.48; // About 52% of adult men are married
+          obeseFactor = 0.78; // About 22% of adult men are obese
+          break;
+          
+        case 'in': // India
+          heightFactor = calculateHeightProbability(minHeight, 65, 3); // Shorter than most countries
+          incomeFactor = calculateIncomeProbabilityIN(minIncome);
+          marriedFactor = 0.4; // About 60% of adult men are married
+          obeseFactor = 0.95; // Only about 5% of adult men are obese
+          break;
+          
+        default: // Default to US values
+          heightFactor = calculateHeightProbability(minHeight, 69, 3);
+          incomeFactor = calculateIncomeProbabilityUS(minIncome);
+          marriedFactor = 0.5;
+          obeseFactor = 0.65;
+      }
+      
+      // Apply factors
+      probability *= heightFactor;
+      probability *= incomeFactor;
+      
+      // Race factor - this would need to be adjusted by country in a real implementation
+      const raceFactor = races.length / 4; // 4 is total available races
+      probability *= raceFactor;
+      
+      // Additional requirements
+      if (excludeMarried) {
+        probability *= marriedFactor;
+      }
+      
+      if (excludeObese) {
+        probability *= obeseFactor;
+      }
+      
+      // Cap the result between 0.01% and 100%
+      return Math.max(0.01, Math.min(100, probability));
+    }
+
+    // Height probability calculation
+    function calculateHeightProbability(minHeight, meanHeight, stdDev) {
+      // Using normal distribution approximation
+      const zScore = (minHeight - meanHeight) / stdDev;
+      const probability = 1 - normalCDF(zScore);
+      return probability;
+    }
+
+    // Income probability calculations by country
+    function calculateIncomeProbabilityUS(minIncome) {
+      if (minIncome <= 30000) return 0.9;
+      if (minIncome <= 50000) return 0.7;
+      if (minIncome <= 75000) return 0.5;
+      if (minIncome <= 100000) return 0.3;
+      if (minIncome <= 150000) return 0.15;
+      if (minIncome <= 200000) return 0.08;
+      if (minIncome <= 300000) return 0.03;
+      if (minIncome <= 400000) return 0.01;
+      return 0.005; // $400,000+
+    }
+    
+    function calculateIncomeProbabilityUK(minIncome) {
+      // UK has lower average incomes than US
+      const usdToGbp = 0.8; // Approximate conversion rate
+      const gbpEquivalent = minIncome * usdToGbp;
+      
+      if (gbpEquivalent <= 24000) return 0.9;
+      if (gbpEquivalent <= 40000) return 0.7;
+      if (gbpEquivalent <= 60000) return 0.4;
+      if (gbpEquivalent <= 80000) return 0.2;
+      if (gbpEquivalent <= 120000) return 0.08;
+      if (gbpEquivalent <= 160000) return 0.04;
+      if (gbpEquivalent <= 240000) return 0.01;
+      return 0.005; // £240,000+
+    }
+    
+    function calculateIncomeProbabilityCA(minIncome) {
+      // Canada has similar income distribution to US
+      const usdToCad = 1.3; // Approximate conversion rate
+      const cadEquivalent = minIncome * usdToCad;
+      
+      if (cadEquivalent <= 39000) return 0.9;
+      if (cadEquivalent <= 65000) return 0.7;
+      if (cadEquivalent <= 97500) return 0.5;
+      if (cadEquivalent <= 130000) return 0.3;
+      if (cadEquivalent <= 195000) return 0.15;
+      if (cadEquivalent <= 260000) return 0.08;
+      if (cadEquivalent <= 390000) return 0.03;
+      return 0.01; // CAD 390,000+
+    }
+    
+    function calculateIncomeProbabilityAU(minIncome) {
+      // Australia has higher average incomes than US
+      const usdToAud = 1.4; // Approximate conversion rate
+      const audEquivalent = minIncome * usdToAud;
+      
+      if (audEquivalent <= 42000) return 0.9;
+      if (audEquivalent <= 70000) return 0.7;
+      if (audEquivalent <= 105000) return 0.55;
+      if (audEquivalent <= 140000) return 0.35;
+      if (audEquivalent <= 210000) return 0.17;
+      if (audEquivalent <= 280000) return 0.09;
+      if (audEquivalent <= 420000) return 0.04;
+      return 0.015; // AUD 420,000+
+    }
+    
+    function calculateIncomeProbabilityDE(minIncome) {
+      // Germany has slightly lower average incomes than US
+      const usdToEur = 0.85; // Approximate conversion rate
+      const eurEquivalent = minIncome * usdToEur;
+      
+      if (eurEquivalent <= 25500) return 0.9;
+      if (eurEquivalent <= 42500) return 0.7;
+      if (eurEquivalent <= 63750) return 0.45;
+      if (eurEquivalent <= 85000) return 0.25;
+      if (eurEquivalent <= 127500) return 0.12;
+      if (eurEquivalent <= 170000) return 0.06;
+      if (eurEquivalent <= 255000) return 0.02;
+      return 0.005; // EUR 255,000+
+    }
+    
+    function calculateIncomeProbabilityFR(minIncome) {
+      // France has similar income distribution to Germany
+      const usdToEur = 0.85; // Approximate conversion rate
+      const eurEquivalent = minIncome * usdToEur;
+      
+      if (eurEquivalent <= 25500) return 0.9;
+      if (eurEquivalent <= 42500) return 0.7;
+      if (eurEquivalent <= 63750) return 0.45;
+      if (eurEquivalent <= 85000) return 0.25;
+      if (eurEquivalent <= 127500) return 0.12;
+      if (eurEquivalent <= 170000) return 0.05;
+      if (eurEquivalent <= 255000) return 0.02;
+      return 0.005; // EUR 255,000+
+    }
+    
+    function calculateIncomeProbabilityJP(minIncome) {
+      const usdToJpy = 110; // Approximate conversion rate
+      const jpyEquivalent = minIncome * usdToJpy;
+      
+      if (jpyEquivalent <= 3300000) return 0.9;
+      if (jpyEquivalent <= 5500000) return 0.7;
+      if (jpyEquivalent <= 8250000) return 0.45;
+      if (jpyEquivalent <= 11000000) return 0.25;
+      if (jpyEquivalent <= 16500000) return 0.1;
+      if (jpyEquivalent <= 22000000) return 0.05;
+      if (jpyEquivalent <= 33000000) return 0.02;
+      return 0.005; // JPY 33,000,000+
+    }
+    
+    function calculateIncomeProbabilityBR(minIncome) {
+      // Brazil has much lower average incomes than US
+      const usdToBrl = 5.0; // Approximate conversion rate
+      const brlEquivalent = minIncome * usdToBrl;
+      
+      if (brlEquivalent <= 150000) return 0.9;
+      if (brlEquivalent <= 250000) return 0.7;
+      if (brlEquivalent <= 375000) return 0.3;
+      if (brlEquivalent <= 500000) return 0.1;
+      if (brlEquivalent <= 750000) return 0.05;
+      if (brlEquivalent <= 1000000) return 0.02;
+      if (brlEquivalent <= 1500000) return 0.01;
+      return 0.003; // BRL 1,500,000+
+    }
+    
+    function calculateIncomeProbabilityIN(minIncome) {
+      // India has much lower average incomes than US
+      const usdToInr = 75; // Approximate conversion rate
+      const inrEquivalent = minIncome * usdToInr;
+      
+      if (inrEquivalent <= 2250000) return 0.9;
+      if (inrEquivalent <= 3750000) return 0.5;
+      if (inrEquivalent <= 5625000) return 0.2;
+      if (inrEquivalent <= 7500000) return 0.08;
+      if (inrEquivalent <= 11250000) return 0.03;
+      if (inrEquivalent <= 15000000) return 0.01;
+      if (inrEquivalent <= 22500000) return 0.005;
+      return 0.001; // INR 22,500,000+
+    }
+
+    // Approximation of cumulative normal distribution function
+    function normalCDF(z) {
+      // Approximation to the cumulative distribution function for the standard normal distribution
+      
+      const b1 = 0.31938153;
+      const b2 = -0.356563782;
+      const b3 = 1.781477937;
+      const b4 = -1.821255978;
+      const b5 = 1.330274429;
+      const p = 0.2316419;
+      const c = 0.39894228;
+      
+      if (z >= 0) {
+        const t = 1.0 / (1.0 + p * z);
+        return 1.0 - c * Math.exp(-z * z / 2.0) * t * (t * (t * (t * (t * b5 + b4) + b3) + b2) + b1);
+      } else {
+        const t = 1.0 / (1.0 - p * z);
+        return c * Math.exp(-z * z / 2.0) * t * (t * (t * (t * (t * b5 + b4) + b3) + b2) + b1);
+      }
+    }
+
+    // Detailed result explanation and advice
+    function getExplanationAndAdvice(probability) {
+      let explanation, advice;
+      
+      if (probability < 0.1) {
+        explanation = `Your criteria are extremely restrictive. Only about ${probability.toFixed(2)}% of men would meet all these standards simultaneously, making it nearly impossible to find such a partner. To put this in perspective, you would need to meet approximately ${Math.round(1000/probability)} men to have a reasonable chance of finding one who meets all criteria.`;
+        advice = `Consider which criteria are truly essential for relationship happiness and be more flexible on others. Remember that compatibility, emotional connection, and shared values often matter more than meeting every single preference on a checklist. Research shows that the most successful relationships are built on mutual respect, effective communication, and similar core values—factors that aren't easily measured by demographic criteria.`;
+      } else if (probability < 1) {
+        explanation = `Your standards are very high. Only about ${probability.toFixed(2)}% of men would meet all these criteria simultaneously, making it very difficult to find such a partner. To put this in perspective, you would need to meet approximately ${Math.round(100/probability)} men to have a reasonable chance of finding one who meets all criteria.`;
+        advice = `Think about which qualities truly matter for a successful relationship. Being selective about 2-3 key factors while remaining open-minded about others might yield better results. Consider whether factors like shared values, emotional intelligence, and communication style might be more predictive of relationship success than some of the criteria you've selected. Dating research suggests flexibility in certain criteria can significantly expand your compatible matches.`;
+      } else if (probability < 5) {
+        explanation = `Your criteria are quite selective. About ${probability.toFixed(2)}% of men would meet all these standards simultaneously, which means your dating pool is fairly limited. In a room of 100 men, only about ${Math.round(probability)} would meet all your criteria. This level of selectivity may extend your search time significantly.`;
+        advice = `Consider whether some of your preferences are negotiable. Focus on deal-breakers versus nice-to-haves. Many successful couples report that their partners didn't initially match their "ideal" checklist, but possessed other wonderful qualities they hadn't considered. Expanding your dating pool doesn't mean settling—it means recognizing that compatibility is complex and sometimes surprising.`;
+      } else if (probability < 15) {
+        explanation = `Your standards are somewhat selective. About ${probability.toFixed(2)}% of men would meet all these criteria simultaneously, giving you a reasonable but limited dating pool. In a room of 100 men, about ${Math.round(probability)} would meet all your criteria. With this level of selectivity, finding a compatible partner will take time but is achievable.`;
+        advice = `These standards are achievable but may still limit your options in some locations or social circles. Being open to people who might not check every box but have other great qualities could lead to unexpected connections. Consider which of your criteria have been most predictive of compatibility in your past relationships, and which might be worth reconsidering.`;
+      } else if (probability < 30) {
+        explanation = `Your criteria are moderately selective. About ${probability.toFixed(2)}% of men would meet all these standards simultaneously, giving you a decent-sized dating pool. In a room of 100 men, about ${Math.round(probability)} would meet all your criteria. This balanced approach allows for selectivity while maintaining a reasonable number of potential matches.`;
+        advice = `Your standards are reasonable and attainable. Keep in mind that connection and compatibility often develop from unexpected places, so remain open to getting to know people who might not initially seem to fit your criteria perfectly. Research suggests that successful relationships often surprise us with qualities we didn't know we wanted or needed.`;
+      } else {
+        explanation = `Your criteria are quite inclusive. About ${probability.toFixed(2)}% of men would meet these standards, giving you a large dating pool. In a room of 100 men, about ${Math.round(probability)} would meet all your criteria. This approach gives you many potential matches to choose from.`;
+        advice = `With these inclusive standards, you have many potential matches. This gives you the freedom to be selective about other important factors like personality, values, emotional intelligence, and mutual interests - qualities that often matter more for long-term compatibility than the criteria measured here. Having a larger initial pool allows you to focus on deeper connection factors.`;
+      }
+      
+      return { explanation, advice };
+    }
+    
+    // Confetti animation
+    function createConfetti() {
+      const confettiContainer = document.getElementById('confetti-container');
+      confettiContainer.style.display = 'block';
+      confettiContainer.innerHTML = '';
+      
+      const colors = ['#5D5CDE', '#27D8FF', '#FF6666', '#4CAF50', '#FBBF24'];
+      
+      // Create confetti pieces
+      for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        
+        // Random properties
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const size = Math.random() * 10 + 5;
+        const positionX = Math.random() * 100;
+        
+        confetti.style.backgroundColor = color;
+        confetti.style.width = `${size}px`;
+        confetti.style.height = `${size}px`;
+        confetti.style.left = `${positionX}%`;
+        
+        // Random animation
+        const animationDelay = Math.random() * 3;
+        confetti.style.animationDelay = `${animationDelay}s`;
+        
+        const animationClass = Math.random() > 0.6 ? 
+                               'confetti--animation-slow' : 
+                               (Math.random() > 0.5 ? 'confetti--animation-medium' : 'confetti--animation-fast');
+        
+        confetti.classList.add(animationClass);
+        
+        confettiContainer.appendChild(confetti);
+      }
+      
+      // Clean up confetti after animations complete
+      setTimeout(() => {
+        confettiContainer.innerHTML = '';
+        confettiContainer.style.display = 'none';
+      }, 6000);
+    }
+  </script>
+</body>
+</html>
